@@ -3,6 +3,7 @@ package com.allan.APIStore.services;
 import java.util.List;
 import java.util.Optional;
 
+import com.allan.APIStore.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +27,8 @@ public class UserService {
 	// Retornando valores quando a busca é feita por Id
 	public User findById(Long id) {
 		Optional<User> obj = repository.findById(id);
-		return obj.get();
+		// Tentará dar o get, se nao tiver usuário será lançado o OrElseThrow com a excessão ResourceNotFoundException
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 	
 	// Metodo para salvar o objeto no banco
