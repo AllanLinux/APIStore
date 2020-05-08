@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import com.allan.APIStore.entities.User;
 import com.allan.APIStore.repositories.UserRepository;
 
+import javax.persistence.EntityNotFoundException;
+
 // Registrando a classe como componente do Spring, para que a injeção de dependencia funcione com @AutoWired
 @Service
 public class UserService {
@@ -52,11 +54,15 @@ public class UserService {
 
 	// Metodo para atualizar os dados do usuário, recebendo o id do usuário que irá atualizar e também o objeto user contendo os dados a serem atualizados
 	public User update(Long id, User obj) {
-		// GetOne irá instancia o usuario, carregado na memória para trabalhar com ele antes de acessar o DB
-		User entity = repository.getOne(id);
-		// Atualizando os dados do entity baseado nos dados recebeidos do obj
-		updateData(entity, obj);
-		return repository.save(entity);
+		try {
+			// GetOne irá instancia o usuario, carregado na memória para trabalhar com ele antes de acessar o DB
+			User entity = repository.getOne(id);
+			// Atualizando os dados do entity baseado nos dados recebeidos do obj
+			updateData(entity, obj);
+			return repository.save(entity);
+		} catch(EntityNotFoundException e) {
+			throw new ResourceNotFoundException(id);
+		}
 	}
 	// Esse metodo recebe do obj e os seta com os novos
 	private void updateData(User entity, User obj) {
