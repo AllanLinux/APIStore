@@ -10,10 +10,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.allan</groupId>
-	<artifactId>secao25</artifactId>
+	<artifactId>apistore</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>secao25</name>
-	<description>Demo project for Spring Boot</description>
+	<name>apistore</name>
+	<description>Application API Store</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -80,8 +80,8 @@
 					</execution>
 				</executions>
 				<configuration>
-					<useMavenSettingForAuth>true</useMavenSettingForAuth>
-					<repository>allanlinux/secao25</repository>
+					<useMavenSettingsForAuth>true</useMavenSettingsForAuth>
+					<repository>allanlinux/apistore</repository>
 					<tag>${project.version}</tag>
 					<buildArgs>
 						<JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
