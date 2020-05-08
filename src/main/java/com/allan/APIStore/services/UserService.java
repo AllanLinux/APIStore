@@ -3,8 +3,11 @@ package com.allan.APIStore.services;
 import java.util.List;
 import java.util.Optional;
 
+import com.allan.APIStore.services.exceptions.DatabaseException;
 import com.allan.APIStore.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.allan.APIStore.entities.User;
@@ -37,7 +40,15 @@ public class UserService {
 	}
 
 	// Metodo para remover usuário
-	public void delete(Long id) { repository.deleteById(id); }
+	public void delete(Long id) {
+		try {
+			repository.deleteById(id);
+		} catch(EmptyResultDataAccessException e) {
+			throw new ResourceNotFoundException(id);
+		} catch (DataIntegrityViolationException e) {
+			throw new DatabaseException(e.getMessage());
+		}
+	}
 
 	// Metodo para atualizar os dados do usuário, recebendo o id do usuário que irá atualizar e também o objeto user contendo os dados a serem atualizados
 	public User update(Long id, User obj) {
