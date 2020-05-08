@@ -18,7 +18,24 @@ Foi criado um projeto com Java 11 e Spring Boot em que simula um sistema de comp
 ## Tecnologias utilizadas :rocket:
 ![1](https://user-images.githubusercontent.com/20358075/81347691-0ebbc380-9093-11ea-8a27-ac6c20c06c52.JPG)
 
-## Status de desenvolvimento :construction:
-O projeto consta em desenvolvimento, faltando algumas operações para conclusão. Será disponibilizado o endereço, este que será hospedado no contêiner no Microsoft Azure
+## Endereços de acesso :door:
+<br>
+
+Endpoints para realizare os testes de usabilidade e também a documentação das API's com Swagger.
+
+Endpoint raiz:
+```sh
+https://spring-apistore.herokuapp.com/
+```
+
+Swagger
+```sh
+https://spring-apistore.herokuapp.com/swagger-ui.html#/
+```
+
+
+
+
+
 
 
