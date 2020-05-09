@@ -23,12 +23,14 @@ Foi criado um projeto com Java 11 e Spring Boot em que simula um sistema de comp
 
 Endpoints para realizare os testes de usabilidade e também a documentação das API's com Swagger.
 
-Endpoint raiz:
+<h3>Endpoint raiz: </h3>
+
 ```sh
 https://spring-apistore.herokuapp.com/
 ```
 
-Swagger
+<h3>Swagger</h3>
+
 ```sh
 https://spring-apistore.herokuapp.com/swagger-ui.html#/
 ```
